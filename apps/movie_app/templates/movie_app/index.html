@@ -51,7 +51,7 @@
           <div id="map" class="jumbotron">
 
           </div>
-       
+          <div class="searchBtn">
           <h4>Select a Title:</h4>
           <select class="form-control" id="titleSelect">
             {% for title in titles%}
@@ -59,6 +59,20 @@
             {%endfor%}
             </select>
             <button id="btnTitle">Search</button>
+            </div>
+
+
+
+            <div class="searchBtn">
+
+            <h4>Select a actor:</h4>
+            <select class="form-control" id="actorSelect">
+            {% for actor in actors%}
+                <option>{{actor}}</option>
+            {%endfor%}
+            </select>
+            <button id="btnActor">Search</button>
+            </div>
         <!--   <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Titles<span class="caret"></span></button>
             <ul class="dropdown-menu">

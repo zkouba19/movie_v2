@@ -38,10 +38,32 @@ $(document).on("click", "#btnTitle", function() {
     }
 });
 
-// $(document).on("click", "#clearFav", function() {
-//     Object.keys(favoriteList).length = 0
-//     console.log(favoriteList)
-// });
+$(document).on("click", "#btnActor", function() {
+    var newTitle = $("#actorSelect option:selected").text()
+        $("#movies").html("")
+
+    var arr = []
+        var loca = []
+        var dataSet = $.getJSON("static/movie_app/js/movies.json", function(){
+            for(var i = 0; i < 1586; i++){
+                if(dataSet.responseJSON.data[i][8] != arr[arr.length-1]){
+                    if (dataSet.responseJSON.data[i][8] != favoriteList[dataSet.responseJSON.data[i][8]]){
+                        if(dataSet.responseJSON.data[i][14] == newTitle){
+                            arr.push(dataSet.responseJSON.data[i][8])
+                            loca.push(dataSet.responseJSON.data[i][10])
+                            $.get(`http://www.omdbapi.com/?t=${dataSet.responseJSON.data[i][8]}&y=&plot=short&r=json`, function(res){
+                                var poster = res.Poster
+                                var title = res.Title
+                                $("#movies").append(`<div class="posterDiv" class="col-xs-6 col-lg-4"><img id="${title}"  src="${poster}" loc=""></div>`)
+                                $(".posterDiv")//.show("slide", { direction: "left" }, 1000);
+                            })
+                        }
+                    }
+                }
+            }
+        });
+});
+
 
     function makePosters(){
         var arr = []

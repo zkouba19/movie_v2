@@ -50,3 +50,9 @@ body {
 	    width: 160px;
 
 }
+
+.searchBtn{
+	display: inline-block;
+	vertical-align: top;
+	width:170px;
+}
