@@ -22,6 +22,22 @@ $(document).on("click", "img", function() {
     makePosters()
 
 });
+$(document).on("click", "#btnTitle", function() {
+    var newTitle = $("#titleSelect option:selected").text()
+    if(newTitle == "") {
+        $("#movies").html("")
+        makePosters()
+    }
+    else {
+        $("#movies").html("")
+        $.get(`http://www.omdbapi.com/?t=${newTitle}&y=&plot=short&r=json`, function(res){
+            var poster = res.Poster
+            var title = res.Title
+            $("#movies").append(`<div class="posterDiv" class="col-xs-6 col-lg-4"><img id="${title}"  src="${poster}" loc=""></div>`)
+        });
+    }
+});
+
 // $(document).on("click", "#clearFav", function() {
 //     Object.keys(favoriteList).length = 0
 //     console.log(favoriteList)

@@ -46,19 +46,7 @@
 body {
 	font-family: "futura-pt",sans-serif;
 }
-.dropdown {
-	display: inline-block;
-	width:150px;
-	    margin-bottom: 20px;
+.form-control{
+	    width: 160px;
 
 }
-.dropdown button {
- width: 100px;
-}
-.dropdown-menu{
-   height: auto;
-   max-height: 200px;
-   overflow-x: hidden;
-	
-}
-
