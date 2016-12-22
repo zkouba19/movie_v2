@@ -6,6 +6,7 @@ def index(request):
 
 def myfavorites(request):
 	if request.method == "POST":
+	
 		context = {
 			'location1': request.POST['location1'],
 			'location2': request.POST['location2'],

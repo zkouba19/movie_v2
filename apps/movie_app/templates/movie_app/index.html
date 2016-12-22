@@ -4,34 +4,121 @@
 <!-- this is our API address https://data.sfgov.org/api/views/yitu-d5am/rows.json?accessType=DOWNLOAD -->
     <title>movie</title>
     {% load staticfiles %}
-     <link rel="stylesheet" type="text/css" href="{% static 'movie_app/css/index.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     
     <script src="{% static 'movie_app/js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'movie_app/css/index.css' %}">
     
-     
-    
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://use.typekit.net/iii7xtz.js"></script>
+   <script>try{Typekit.load({ async: true });}catch(e){}</script>
   
 </head>
 <body>
-<div id="header">
-    <h1>Welcome to the SF Movie Page</h1>
-</div>
 
-<div id="movies"></div>
+ <nav class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Movies Near Me</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+           
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
 
-<form action="myfavorites/" method="post">
-    {% csrf_token %}
-    <input type="hidden" id="location1" name="location1" value="Golden Gate Bridge">
-    <input type="hidden" id="location2" name="location2" value="Potrero Hill">
-    <input type="hidden" id="location3" name="location3" value="Chinatown">
-    <input type="hidden" id="location4" name="location4" value="San Francisco Bay">
-    <input type="submit" id="submit" name="submit">
-</form>
+    <div class="container">
 
-<div id="map"></div>
+      <div id="wrapperCon" class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div id="map" class="jumbotron">
+
+          </div>
+
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Titles<span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Looking</a></li>
+              <li><a href="#">Pushing Dead</a></li>
+              <li><a href="#">Quitters</a></li>
+              <li><a href="#">Sense8</a></li>
+              <li><a href="#">Smile Again, Jenny Lee</a></li>
+              <li><a href="#">Steve Jobs</a></li>
+              <li><a href="#">Summertime</a></li>
+              <li><a href="#">The Bachelor</a></li>
+              <li><a href="#">The Conversation</a></li>
+              <li><a href="#">The Dead Pool</a></li>
+              <li><a href="#">The Enforcer</a></li>
+              <li><a href="#">The Game</a></li>
+              <li><a href="#">Smile Again, Jenny Lee</a></li>
+            </ul>
+        </div>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Actor<span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">HTML</a></li>
+              <li><a href="#">CSS</a></li>
+              <li><a href="#">JavaScript</a></li>
+            </ul>
+        </div>
+            <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Year<span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">HTML</a></li>
+              <li><a href="#">CSS</a></li>
+              <li><a href="#">JavaScript</a></li>
+            </ul>
+        </div>
+          <div id="movies" class="row">
+
+             
+          </div><!--/row-->
+        </div><!--/.col-xs-12.col-sm-9-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+          <h3>Favorites List</h3>
+          <form action="#" method="post" id="mapFav">
+              {% csrf_token %}
+            <input type="hidden" name="a" value="333 market st" >              
+            <input type="hidden" name="a" value="1 market st" >              
+            <input type="hidden" name="a" value="426 Castro St." >              
+            <input type="hidden" name="a" value="1801 Laguna at Bush" >              
+            <input type="hidden" name="a" value="3301 Lyon Street" >              
+            <input type="submit" >
+          </form>
+
+          <div id="favList" class="list-group">
+   
+          </div>
+        </div><!--/.sidebar-offcanvas-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+
+    </div><!--/.container-->
+
+
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false">
  </script> 
  <script type="text/javascript">
@@ -86,17 +173,15 @@
  }
   var locations = [
 
-           // 'City Hall', 
+           'City Hall', 
   ];
-    location1 = document.getElementById('location1').value
-    locations.push(location1)
-    location2 = document.getElementById('location2').value
-    locations.push(location2)
-    location3 = document.getElementById('location3').value
-    locations.push(location3)
-    location4 = document.getElementById('location4').value
-    locations.push(location4)
-    console.log(locations)
+  var dataSet = $.getJSON("static/movie_app/js/movies.json", function(){
+   for(var i = 0; i < 2; i++){
+      if(dataSet.responseJSON.data[i][10] != locations[locations.length-1]){
+          locations.push(dataSet.responseJSON.data[i][10])
+      }
+    }
+  });
 
     var nextAddress = 0;
   function theNext() {
@@ -108,9 +193,20 @@
     }
   }
   theNext();
+$("#mapFav").click(function(e) {
+  e.preventDefault();
+  var newFav = $( this ).serializeArray()
+  locations = []
+  for(var i=1; i < newFav.length; i++) {
 
+    locations.push(newFav[i].value)
+  }
+  theNext()
+
+});
 
 </script>
+
 </body>
 </html>
 
